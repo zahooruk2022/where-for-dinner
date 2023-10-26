@@ -1,0 +1,33 @@
+id: d4235f19-0484-4540-946b-aa7c3d600f5c
+timestamp: 2023-10-26T14:32:18Z
+username: zahooruk2022
+source: TAP-GUI
+accelerator:
+  name: where-for-dinner
+  source:
+    image: europe-west2-docker.pkg.dev/za-tanzu/tap/tap-packages@sha256:9d9fc8e638a737d627b9f8edc24dccf76b8dbcf73190a099ea879e39ac4b2051
+fragments:
+  - name: tap-workload
+    source:
+      image: europe-west2-docker.pkg.dev/za-tanzu/tap/tap-packages@sha256:dbf0dedb6848ad8a7704c1c19465a1ddae9039b0e63c1dd0df3e2ed9cbda6093
+  - name: build-wrapper-maven
+    source:
+      image: europe-west2-docker.pkg.dev/za-tanzu/tap/tap-packages@sha256:195a3ca6585fa91c41292584a19c2807c72ecdf986ce860a7147451e89d467d4
+options:
+  bsGitBranch: main
+  bsGitRepository: github.com?owner=zahooruk2022&repo=where-for-dinner
+  cacheName: cache-where-for-dinner
+  cacheType: inmemCache
+  dbType: h2
+  dynamicCache: false
+  dynamicMsgBroker: true
+  dynamicMsgBrokerClass: msgbroker-crossplane-where-for-dinner
+  enableCloudEvents: false
+  enableSecurity: false
+  includeBuildToolWrapper: true
+  msgBrokerType: rabbitmq
+  msgbrokerName: msgbroker-where-for-dinner
+  numRabbitMQClusterNodes: 1
+  projectName: where-for-dinner
+  serviceNamespace: service-instances
+  workloadNamespace: workloads
